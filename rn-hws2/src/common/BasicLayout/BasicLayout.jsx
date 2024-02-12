@@ -10,7 +10,9 @@ const BasicLayout = ({children}) => {
                 <View style={styles.squareFirst}></View>
                 <View style={styles.squareSecond}></View>
             </View>
+            {/*{header}*/}
             {children}
+            {/*{footer}*/}
         </View>
     );
 };

@@ -4,35 +4,28 @@ import {Dimensions} from 'react-native';
 
 const {width, height} = Dimensions.get('window');
 
-
 const styles = StyleSheet.create({
     container: {
-        flex: 10,
+        flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-between',
-        // backgroundColor: 'blue'
+        justifyContent: 'flex-end',
+
+        // backgroundColor: 'red'
     },
-    bgImage: {
-        width: 300,
-        height: 300,
-        marginTop: 200
+    signInBtnContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 10,
+        marginBottom: 10,
     },
-    title: {
-        fontSize: 24,
-        fontWeight: '700'
-    },
-    text: {
-        fontSize: 18,
-        lineHeight: 24,
-        fontWeight: '700',
-        textAlign: 'center',
-        margin: 30
+    signInBtnText: {
+        color: '#30A6AE',
+        fontWeight: '600'
     },
     button: {
-        width: (width*0.75),
+        width: (width * 0.75),
         backgroundColor: '#30A6AE',
         padding: 12,
-        marginBottom: 60,
         alignItems: "center",
     },
     buttonText: {

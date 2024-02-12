@@ -3,6 +3,8 @@ import GetStartedScreen from "../screens/GetStartedScreen/GetStartedScreen";
 import SignInScreen from "../screens/SignInScreen/SignInScreen";
 import SignUpScreen from "../screens/SignUpScreen/SignUpScreen";
 import Test from "../screens/Test";
+import RegisterScreen from "../screens/RegisterScreen/RegisterScreen";
+import LoginScreen from "../screens/LoginScreen/LoginScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -20,8 +22,12 @@ const RootNavigation = () => {
                 options={{
                     headerShown: false
                 }}
-                name={'SignUp'} component={SignUpScreen}/>
-            <Stack.Screen name={'SignIn'} component={SignInScreen}/>
+                name={'SignUp'} component={RegisterScreen}/>
+            <Stack.Screen
+                options={{
+                    headerShown: false
+                }}
+                name={'SignIn'} component={LoginScreen}/>
             <Stack.Screen name={'Test'} component={Test}/>
         </Stack.Navigator>
     )
