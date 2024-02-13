@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         // justifyContent: 'flex-start',
 
-        backgroundColor: 'red'
+        // backgroundColor: 'red'
     },
     forgotPasswordText: {
         color: '#0E6565',

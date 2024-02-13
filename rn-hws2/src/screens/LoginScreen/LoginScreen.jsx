@@ -3,6 +3,9 @@ import styles from './styles';
 import {Pressable, Text, TextInput, View, KeyboardAvoidingView, Platform, Linking, Alert} from "react-native";
 import BasicLayout from "../../common/BasicLayout/BasicLayout";
 import AuthLayout from "../../common/AuthLayout/AuthLayout";
+import {Image} from "expo-image";
+
+
 
 const LoginScreen = ({navigation}) => {
 
@@ -27,20 +30,23 @@ const LoginScreen = ({navigation}) => {
 
 
     return (
-        <AuthLayout
-            footerSignInShown={true}
-            footerForgotPasswordShown={true}
-            navigation={navigation}
-            footerButtonText={'SignIn'}
-            navigateTo={'GetStarted'}>
+        <AuthLayout footerButtonText={'Login'}
+                    footerButtonNavigation={'GetStarted'}
+                    footerBottomBarShown={true}
+                    footerBottomBarText={"Don't have an account? "}
+                    footerBottomBarButton={'Sign up'}
+                    footerBottomBarNavigation={'SignUp'}
+                    footerForgotPasswordShown={true}>
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 style={styles.container}>
+                <Text style={styles.title}>Welcome back!</Text>
 
-                <View style={styles.titleContainer}>
-                    <Text style={styles.title}>Welcome Onboard</Text>
-                    <Text style={styles.text}>Let's help you meet up your tasks.</Text>
-                </View>
+                <Image style={styles.bgImage} source={require('../../../assets/images/loginImg.png')}></Image>
+                {/*<View style={styles.titleContainer}>*/}
+                {/*    <Text style={styles.title}>Welcome Onboard</Text>*/}
+                {/*    <Text style={styles.text}>Let's help you meet up your tasks.</Text>*/}
+                {/*</View>*/}
                 <View style={styles.inputsContainer}>
 
                     <TextInput
@@ -49,13 +55,13 @@ const LoginScreen = ({navigation}) => {
                         keyboardType='email-address'
                         caretHidden={false}
                         onChangeText={inputEmailHandler}
-                        placeholder='Enter your email id'/>
+                        placeholder='Enter your email'/>
                     <TextInput
                         style={styles.input}
                         value={password}
                         keyboardType='visible-password'
                         onChangeText={inputPasswordHandler}
-                        placeholder='Enter Password'/>
+                        placeholder='Enter your password'/>
 
                 </View>
 

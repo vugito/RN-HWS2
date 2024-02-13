@@ -3,8 +3,11 @@ import styles from './styles';
 import {Pressable, Text, TextInput, View, KeyboardAvoidingView, Platform, Linking, Alert} from "react-native";
 import BasicLayout from "../../common/BasicLayout/BasicLayout";
 import AuthLayout from "../../common/AuthLayout/AuthLayout";
+import {useNavigation} from "@react-navigation/native";
 
-const RegisterScreen = ({navigation}) => {
+const RegisterScreen = () => {
+
+    const navigation = useNavigation();
 
     console.log('Navigation: ', navigation.getState());
 
@@ -12,8 +15,8 @@ const RegisterScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
 
+    const [showPassword, setShowPassword] = useState(false);
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
@@ -37,7 +40,14 @@ const RegisterScreen = ({navigation}) => {
 
 
     return (
-        <AuthLayout footerSignInShown={true} navigation={navigation} footerButtonText={'Register'} navigateTo={'SignIn'}>
+        <AuthLayout
+            footerButtonText={'Register'}
+            footerButtonNavigation={'SignIn'}
+            footerBottomBarShown={true}
+            footerBottomBarText={'Already have an account? '}
+            footerBottomBarButton={'Sign In.'}
+            footerBottomBarNavigation={'SignIn'}>
+
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 style={styles.container}>
@@ -46,6 +56,7 @@ const RegisterScreen = ({navigation}) => {
                     <Text style={styles.title}>Welcome Onboard</Text>
                     <Text style={styles.text}>Let's help you meet up your tasks.</Text>
                 </View>
+
                 <View style={styles.inputsContainer}>
                     <TextInput
                         style={styles.input}
@@ -72,29 +83,6 @@ const RegisterScreen = ({navigation}) => {
                         onChangeText={inputConfirmPasswordHandler}
                         placeholder='Enter confirm Password'/>
                 </View>
-                {/*<View style={styles.buttonsContainer}>*/}
-                {/*    <Pressable*/}
-                {/*        onPress={() => {*/}
-                {/*            Alert.alert(*/}
-                {/*                "Your entered information:", `Name: ${name}${'\n'}Email: ${email}${'\n'}Password: ${password}${'\n'}Confirm Password: ${confirmPassword}`,*/}
-                {/*                [{text: 'Close'}]*/}
-                {/*            );*/}
-                {/*            console.log('Register. Navigate to Sign In')*/}
-                {/*        }}*/}
-                {/*        style={styles.button}>*/}
-                {/*        <Text style={styles.buttonText}>Register</Text>*/}
-                {/*    </Pressable>*/}
-                {/*    <View style={styles.signInBtnContainer}>*/}
-                {/*        <Text>Already have an account? </Text>*/}
-                {/*        <Pressable*/}
-                {/*            onPress={() => {*/}
-                {/*                console.log('Navigate to Sign In')*/}
-                {/*            }}>*/}
-                {/*            <Text style={styles.signInBtnText}>Sign In</Text>*/}
-                {/*        </Pressable>*/}
-                {/*    </View>*/}
-                {/*</View>*/}
-
             </KeyboardAvoidingView>
         </AuthLayout>
     );

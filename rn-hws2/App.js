@@ -9,8 +9,8 @@ export default function App() {
         <NavigationContainer>
             <View style={styles.container}>
                 <StatusBar style="auto"/>
-                <BottomTabNavigation/>
-                {/* <RootNavigation/> */}
+                {/*<BottomTabNavigation/>*/}
+                 <RootNavigation/>
             </View>
         </NavigationContainer>
     );

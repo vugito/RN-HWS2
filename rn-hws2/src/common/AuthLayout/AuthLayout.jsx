@@ -4,10 +4,16 @@ import {View} from "react-native";
 import AuthFooter from "../../components/sections/footers/AuthFooter/AuthFooter";
 
 
-const AuthLayout = ({children, footerForgotPasswordShown, footerSignInShown, footerButtonText, navigateTo}) => {
-
-
-
+const AuthLayout = ({
+                        children,
+                        footerButtonText,
+                        footerButtonNavigation,
+                        footerForgotPasswordShown,
+                        footerBottomBarShown,
+                        footerBottomBarNavigation,
+                        footerBottomBarButton,
+                        footerBottomBarText
+                        }) => {
     return (
         <View style={styles.container}>
             <View style={styles.squareContainer}>
@@ -17,10 +23,15 @@ const AuthLayout = ({children, footerForgotPasswordShown, footerSignInShown, foo
 
             {/*{header}*/}
             {children}
-            <AuthFooter navigateTo={navigateTo}
-                forgotPasswordShown={footerForgotPasswordShown}
+
+            <AuthFooter
                 buttonText={footerButtonText}
-                signInShown={footerSignInShown} />
+                buttonNavigation={footerButtonNavigation}
+                forgotPasswordShown={footerForgotPasswordShown}
+                bottomBarShown={footerBottomBarShown}
+                bottomBarNavigation={footerBottomBarNavigation}
+                bottomBarButton={footerBottomBarButton}
+                bottomBarText={footerBottomBarText}/>
         </View>
     );
 };

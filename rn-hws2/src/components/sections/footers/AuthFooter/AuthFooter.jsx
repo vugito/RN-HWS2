@@ -2,13 +2,20 @@ import React from 'react';
 import styles from './styles';
 import {Pressable, View, Text, Linking} from "react-native";
 import {useNavigation} from "@react-navigation/native";
+import PressableText from "./components/PressableText/PressableText";
 
-const AuthFooter = ({forgotPasswordShown, signInShown, buttonText, navigateTo}) => {
+const AuthFooter = ({
+                        forgotPasswordShown,
+                        buttonText,
+                        buttonNavigation,
+                        bottomBarShown,
+                        bottomBarNavigation,
+                        bottomBarText,
+                        bottomBarButton}) => {
 
     const navigation = useNavigation();
 
-    const handleNavigateToSignIn = () => navigation.navigate('SignIn');
-    const handleNavigateToSignUp = () => navigation.navigate('SignUp');
+    const handleNavigate = () => navigation.navigate(buttonNavigation);
 
     const handleForgotPassword = () => {
         const email = 'vuqar21@gmail.com';
@@ -24,17 +31,14 @@ const AuthFooter = ({forgotPasswordShown, signInShown, buttonText, navigateTo}) 
                     <Text style={styles.forgotPasswordText}>Forget Password</Text>
                 </Pressable>}
 
-            <Pressable onPress={navigation} style={forgotPasswordShown ? styles.button : [styles.button, styles.mt30]}>
+            <Pressable onPress={handleNavigate} style={forgotPasswordShown ? styles.button : [styles.button, styles.mt30]}>
                 <Text style={styles.buttonText}>{buttonText}</Text>
             </Pressable>
 
-            {signInShown &&
-                <View style={styles.signInBtnContainer}>
-                    <Text>Already have an account?</Text>
-                    <Pressable onPress={navigation.navigate('SignUp')}>
-                        <Text style={styles.signInBtnText}>Sign In</Text>
-                    </Pressable>
-                </View>}
+            {bottomBarShown && <PressableText
+                text={bottomBarText}
+                buttonText={bottomBarButton}
+                navigateTo={bottomBarNavigation}/>}
 
         </View>
     );
